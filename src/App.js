@@ -15,7 +15,7 @@ class App extends React.Component {
         this.removeRow = this.removeRow.bind(this);
         this.addCol = this.addCol.bind(this);
         this.removeCol = this.removeCol.bind(this);
-        //this.fillAll = this.fillAll.bind(this);
+        this.fillAll = this.fillAll.bind(this);
     }
 
     componentDidMount() {
@@ -72,16 +72,20 @@ class App extends React.Component {
         this.setState({rows: newRows});
     }
     
-    /*fillAll(){
-        let newRows = this.state.rows;
-        console.log(newRows);
-        for (let i = 0; i < newRows.length; i++){
-            newRows[i].style.backgroundColor=this.state.currentColor;
+    fillAll(){
+        let oldRows = this.state.rows;
+        let newRows = [];
+        for (let i = 0; i < oldRows.length; i++) {
+            let newRow = []
+            for (let j = 0; j < oldRows[i].length; j++) {
+                newRow.push(<div className="canvas-col" style={{backgroundColor: this.state.currentColor}}></div>);
+            }
+            newRows.push(newRow);
         }
         this.setState({
                       rows: newRows
         })
-    }*/
+    }
 
     render() {
         return(
