@@ -30,10 +30,16 @@ class App extends React.Component {
 
     addRow() {
         let newRows = this.state.rows;
-
         let newRow = [];
-        for (let i = 0; i < newRows[0].length; i++) {
-            newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+        if (newRows.length == 0){
+            for (let i = 0; i < 6; i++){
+                newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+            }
+        }
+        else{
+            for (let i = 0; i < newRows[0].length; i++) {
+                newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+            }
         }
         newRows.push(newRow);
         this.setState({rows: newRows});
