@@ -7,13 +7,15 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            rows: []
+            rows: [],
+            currentColor: "red"
         }
 
         this.addRow = this.addRow.bind(this);
         this.removeRow = this.removeRow.bind(this);
         this.addCol = this.addCol.bind(this);
         this.removeCol = this.removeCol.bind(this);
+        //this.fillAll = this.fillAll.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +23,7 @@ class App extends React.Component {
         for (let i = 0; i < 6; i++) {
             let newRow = []
             for (let j = 0; j < 6; j++) {
-                newRow.push(<div className="canvas-col" style={{backgroundColor: "white"}}></div>);
+                newRow.push(<div className="canvas-col" /*onClick={() => this.style.backgroundColor=this.state.currentColor}*/ style={{backgroundColor: "white"}}></div>);
             }
             newRows.push(newRow);
         }
@@ -31,7 +33,7 @@ class App extends React.Component {
     addRow() {
         let newRows = this.state.rows;
         let newRow = [];
-        if (newRows.length == 0){
+        if (newRows.length === 0){
             for (let i = 0; i < 6; i++){
                 newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
             }
@@ -69,6 +71,17 @@ class App extends React.Component {
         }
         this.setState({rows: newRows});
     }
+    
+    /*fillAll(){
+        let newRows = this.state.rows;
+        console.log(newRows);
+        for (let i = 0; i < newRows.length; i++){
+            newRows[i].style.backgroundColor=this.state.currentColor;
+        }
+        this.setState({
+                      rows: newRows
+        })
+    }*/
 
     render() {
         return(
@@ -78,6 +91,7 @@ class App extends React.Component {
                 removeRow={this.removeRow}
                 addCol={this.addCol}
                 removeCol={this.removeCol}
+                fillAll={this.fillAll}
               />
               <Canvas rows={this.state.rows}/>
             </div>

@@ -9,6 +9,7 @@ class Nav extends React.Component {
             <button className="nav-element btn" onClick={this.props.removeRow}>Row -</button>
             <button className="nav-element btn" onClick={this.props.addCol}>Col +</button>
             <button className="nav-element btn" onClick={this.props.removeCol}>Col -</button>
+            <button className="nav-element btn" onClick={this.props.fillAll}>Fill All</button>
           </div>
         );
     }
