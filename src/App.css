@@ -1,0 +1,43 @@
+.app-container {
+    height: 100vh;
+    background: linear-gradient(#0c112b, #090c1c);
+}
+
+.navbar {
+    height: 40px;
+    padding: 5px 10px;
+    background: linear-gradient(#386eb5, #1e406e);
+}
+
+.nav-element {
+    height: 100%;
+    width: 60px;
+    margin: 0 3px;
+    font-size: 12pt;
+}
+
+.title {
+    color: #abcfff;
+    font-size: 18pt;
+    text-shadow: 2px 2px rgba(171, 207, 255, 0.2);
+    margin: 0 60px 0 20px;
+}
+
+.btn {
+    background: #abcfff;
+    border: 0;
+    text-shadow: 2px 2px rgba(90, 90, 90, 0.2);
+    box-shadow: 2px 2px rgba(171, 207, 255, 0.4);
+}
+
+
+.canvas-container {
+    padding: 8px 0;
+}
+.canvas-col {
+    height: 30px;
+    width: 30px;
+    background: white;
+    margin: 1px;
+    display: inline-block;
+}
