@@ -21,7 +21,7 @@ class App extends React.Component {
         for (let i = 0; i < 6; i++) {
             let newRow = []
             for (let j = 0; j < 6; j++) {
-                newRow.push("white");
+                newRow.push(<div className="canvas-col" style={{backgroundColor: "white"}}></div>);
             }
             newRows.push(newRow);
         }
@@ -33,7 +33,7 @@ class App extends React.Component {
 
         let newRow = [];
         for (let i = 0; i < newRows[0].length; i++) {
-            newRow.push(newRows[0][i]);
+            newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
         }
         newRows.push(newRow);
         this.setState({rows: newRows});
@@ -50,7 +50,7 @@ class App extends React.Component {
         let newRows = this.state.rows;
 
         for (let i = 0; i < newRows.length; i++) {
-            newRows[i].push("grey");
+            newRows[i].push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
         }
         this.setState({rows: newRows});
     }
