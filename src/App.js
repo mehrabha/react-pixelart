@@ -23,7 +23,7 @@ class App extends React.Component {
         for (let i = 0; i < 6; i++) {
             let newRow = []
             for (let j = 0; j < 6; j++) {
-                newRow.push(<div className="canvas-col" /*onClick={() => this.style.backgroundColor=this.state.currentColor}*/ style={{backgroundColor: "white"}}></div>);
+                newRow.push(j);
             }
             newRows.push(newRow);
         }
@@ -35,12 +35,12 @@ class App extends React.Component {
         let newRow = [];
         if (newRows.length === 0){
             for (let i = 0; i < 6; i++){
-                newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+                newRow.push(i);
             }
         }
         else{
             for (let i = 0; i < newRows[0].length; i++) {
-                newRow.push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+                newRow.push(i);
             }
         }
         newRows.push(newRow);
@@ -58,7 +58,7 @@ class App extends React.Component {
         let newRows = this.state.rows;
 
         for (let i = 0; i < newRows.length; i++) {
-            newRows[i].push(<div className="canvas-col" style={{backgroundColor: "grey"}}></div>);
+            newRows[i].push(i);
         }
         this.setState({rows: newRows});
     }
@@ -97,7 +97,7 @@ class App extends React.Component {
                 removeCol={this.removeCol}
                 fillAll={this.fillAll}
               />
-              <Canvas rows={this.state.rows}/>
+               <Canvas rows={this.state.rows} color={this.state.currentColor} />
             </div>
         );
     }
