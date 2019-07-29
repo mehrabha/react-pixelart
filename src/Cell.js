@@ -13,7 +13,7 @@ class Cell extends Component{
     changeColor(){
         this.setState({
             curColor: this.props.newColor
-        })
+        });
     }
     
     render(){

@@ -12,7 +12,7 @@ class Row extends React.Component {
         return(
           <div className="canvas-row">
             {this.props.cols.map( col => (
-                <Cell color={"white"} newColor={this.state.color} /> ))}
+                <Cell color={"white"} newColor={this.props.color} /> ))}
           </div>
         );
     }

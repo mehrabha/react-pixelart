@@ -8,14 +8,14 @@ class App extends React.Component {
         super();
         this.state = {
             rows: [],
-            currentColor: "red"
+            currentColor: "red",
         }
 
         this.addRow = this.addRow.bind(this);
         this.removeRow = this.removeRow.bind(this);
         this.addCol = this.addCol.bind(this);
         this.removeCol = this.removeCol.bind(this);
-        this.fillAll = this.fillAll.bind(this);
+        this.selectColor = this.selectColor.bind(this);
     }
 
     componentDidMount() {
@@ -72,20 +72,12 @@ class App extends React.Component {
         this.setState({rows: newRows});
     }
     
-    fillAll(){
-        let oldRows = this.state.rows;
-        let newRows = [];
-        for (let i = 0; i < oldRows.length; i++) {
-            let newRow = []
-            for (let j = 0; j < oldRows[i].length; j++) {
-                newRow.push(<div className="canvas-col" style={{backgroundColor: this.state.currentColor}}></div>);
-            }
-            newRows.push(newRow);
-        }
+    selectColor(event) {
         this.setState({
-                      rows: newRows
+            currentColor: event.target.value
         })
     }
+    
 
     render() {
         return(
@@ -95,7 +87,7 @@ class App extends React.Component {
                 removeRow={this.removeRow}
                 addCol={this.addCol}
                 removeCol={this.removeCol}
-                fillAll={this.fillAll}
+                selectColor={this.selectColor}
               />
                <Canvas rows={this.state.rows} color={this.state.currentColor} />
             </div>
