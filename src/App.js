@@ -8,14 +8,16 @@ class App extends React.Component {
         super();
         this.state = {
             rows: [],
-            currentColor: "red",
+            defaultColor: "white",
+            currentColor: "red"
         }
 
         this.addRow = this.addRow.bind(this);
         this.removeRow = this.removeRow.bind(this);
         this.addCol = this.addCol.bind(this);
         this.removeCol = this.removeCol.bind(this);
-        this.selectColor = this.selectColor.bind(this);
+        this.fillAll = this.fillAll.bind(this);
+        this.fill = this.fill.bind(this);
     }
 
     componentDidMount() {
@@ -23,7 +25,7 @@ class App extends React.Component {
         for (let i = 0; i < 6; i++) {
             let newRow = []
             for (let j = 0; j < 6; j++) {
-                newRow.push(j);
+                newRow.push(this.state.defaultColor);
             }
             newRows.push(newRow);
         }
@@ -35,12 +37,11 @@ class App extends React.Component {
         let newRow = [];
         if (newRows.length === 0){
             for (let i = 0; i < 6; i++){
-                newRow.push(i);
+                newRow.push("grey");
             }
-        }
-        else{
+        } else{
             for (let i = 0; i < newRows[0].length; i++) {
-                newRow.push(i);
+                newRow.push("grey");
             }
         }
         newRows.push(newRow);
@@ -58,7 +59,7 @@ class App extends React.Component {
         let newRows = this.state.rows;
 
         for (let i = 0; i < newRows.length; i++) {
-            newRows[i].push(i);
+            newRows[i].push(this.state.defaultColor);
         }
         this.setState({rows: newRows});
     }
@@ -71,13 +72,36 @@ class App extends React.Component {
         }
         this.setState({rows: newRows});
     }
-    
-    selectColor(event) {
-        this.setState({
-            currentColor: event.target.value
-        })
+
+    fill() {
+        let oldRows = this.state.rows;
+        let newRows = [];
+        for (let i = 0; i < oldRows.length; i++) {
+            let newRow = []
+            for (let j = 0; j < oldRows[i].length; j++) {
+                if (oldRows[i][j] == this.state.defaultColor) {
+                    newRow.push(this.state.currentColor);
+                } else {
+                    newRow.push(oldRows[i][j]);
+                }
+            }
+            newRows.push(newRow);
+        }
+        this.setState({rows: newRows});
     }
-    
+
+    fillAll() {
+        let oldRows = this.state.rows;
+        let newRows = [];
+        for (let i = 0; i < oldRows.length; i++) {
+            let newRow = []
+            for (let j = 0; j < oldRows[i].length; j++) {
+                newRow.push(this.state.currentColor);
+            }
+            newRows.push(newRow);
+        }
+        this.setState({rows: newRows});
+    }
 
     render() {
         return(
@@ -87,9 +111,10 @@ class App extends React.Component {
                 removeRow={this.removeRow}
                 addCol={this.addCol}
                 removeCol={this.removeCol}
-                selectColor={this.selectColor}
+                fill={this.fill}
+                fillAll={this.fillAll}
               />
-               <Canvas rows={this.state.rows} color={this.state.currentColor} />
+              <Canvas rows={this.state.rows}/>
             </div>
         );
     }
